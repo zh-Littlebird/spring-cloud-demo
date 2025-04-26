@@ -1,6 +1,6 @@
 package com.hugo.order.controller;
 
-import com.hugo.order.bean.Order;
+import com.hugo.bean.order.Order;
 import com.hugo.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

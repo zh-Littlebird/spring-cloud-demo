@@ -1,6 +1,6 @@
 package com.hugo.product.service.impl;
 
-import com.hugo.product.bean.Product;
+import com.hugo.bean.product.Product;
 import com.hugo.product.service.ProductService;
 import org.springframework.stereotype.Service;
 

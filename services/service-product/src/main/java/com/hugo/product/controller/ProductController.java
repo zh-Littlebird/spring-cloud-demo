@@ -1,6 +1,6 @@
 package com.hugo.product.controller;
 
-import com.hugo.product.bean.Product;
+import com.hugo.bean.product.Product;
 import com.hugo.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,7 @@ public class ProductController {
     @Autowired
     public ProductService productService;
 
-    @GetMapping("/product/{id}")
+    @GetMapping("/{id}")
     public Product getProduct(@PathVariable("id") Long id) {
         Product product = productService.getProduct(id);
         return product;

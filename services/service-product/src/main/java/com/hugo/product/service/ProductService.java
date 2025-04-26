@@ -1,6 +1,7 @@
 package com.hugo.product.service;
 
-import com.hugo.product.bean.Product;
+
+import com.hugo.bean.product.Product;
 
 public interface ProductService {
     Product getProduct(Long id);

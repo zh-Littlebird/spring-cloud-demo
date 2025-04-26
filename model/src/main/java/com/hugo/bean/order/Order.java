@@ -1,5 +1,6 @@
-package com.hugo.order.bean;
+package com.hugo.bean.order;
 
+import com.hugo.bean.product.Product;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -12,5 +13,5 @@ public class Order {
     private Long userId;
     private String nickName;
     private String address;
-    private List<Object> productList;
+    private List<Product> productList;
 }
