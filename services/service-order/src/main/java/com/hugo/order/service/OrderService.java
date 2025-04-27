@@ -8,4 +8,6 @@ public interface OrderService {
     Order createOrder(Long userId, Long productId);
 
     Product getProductFromRemote(Long productId);
+
+    Product getProductFromRemoteWithLoadBalancer(Long productId);
 }
