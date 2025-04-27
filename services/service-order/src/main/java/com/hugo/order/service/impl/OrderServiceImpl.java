@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order createOrder(Long userId, Long productId) {
-        Product product = getProductFromRemoteWithLoadBalancer(productId);
+        Product product = getProductFromRemoteWithLoadBalancerAnnotation(productId);
         Order order = new Order();
         // TODO 总金额
         order.setTotalAmount(product.getPrice().multiply(new BigDecimal(product.getNum())));
@@ -53,12 +53,23 @@ public class OrderServiceImpl implements OrderService {
         return product;
     }
 
+
+    // 使用负载均衡器
     @Override
     public Product getProductFromRemoteWithLoadBalancer(Long productId) {
         // 1、获取商品服务所在的所有服务器ip和端口
         ServiceInstance instance = loadBalancerClient.choose("service-product");
         // 远程url地址
         String url = "http://" + instance.getHost() + ":" + instance.getPort() + "/product/" + productId;
+        log.info("远程请求：" + url);
+        // 2、远程调用商品服务
+        Product product = restTemplate.getForObject(url, Product.class);
+        return product;
+    }
+
+    @Override
+    public Product getProductFromRemoteWithLoadBalancerAnnotation(Long productId) {
+        String url = "http://service-product/product/" + productId;
         log.info("远程请求：" + url);
         // 2、远程调用商品服务
         Product product = restTemplate.getForObject(url, Product.class);

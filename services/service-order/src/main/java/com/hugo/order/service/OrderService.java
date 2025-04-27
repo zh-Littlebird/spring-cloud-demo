@@ -10,4 +10,6 @@ public interface OrderService {
     Product getProductFromRemote(Long productId);
 
     Product getProductFromRemoteWithLoadBalancer(Long productId);
+
+    Product getProductFromRemoteWithLoadBalancerAnnotation(Long productId);
 }
