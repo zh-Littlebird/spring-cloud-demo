@@ -1,6 +1,7 @@
 package com.hugo.order.controller;
 
 import com.hugo.bean.order.Order;
+import com.hugo.order.properties.OrderProperties;
 import com.hugo.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RefreshScope
+//@RefreshScope
 @RestController
 @RequestMapping("/order")
 public class OrderController {
@@ -18,14 +19,17 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @Value("${order.timeout}")
-    private String orderTimeout;
-    @Value("${order.auto-confirm}")
-    private String orderAutoConfirm;
+//    @Value("${order.timeout}")
+//    private String orderTimeout;
+//    @Value("${order.auto-confirm}")
+//    private String orderAutoConfirm;
+
+    @Autowired
+    private OrderProperties orderProperties;
 
     @GetMapping("/config")
     public String config() {
-        return "order.timeout: " + orderTimeout + ", order.auto-confirm: " + orderAutoConfirm;
+        return "order.timeout: " + orderProperties.getTimeout() + ", order.auto-confirm: " + orderProperties.getAutoConfirm();
     }
 
     @GetMapping("/create")
